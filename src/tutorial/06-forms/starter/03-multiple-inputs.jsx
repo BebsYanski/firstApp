@@ -1,27 +1,26 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const MultipleInputs = () => {
-
-
   const [user, setUser] = useState({
-    name:'',email:'',password:''
-  });
+    name: '',
+    email: '',
+    password: '',
+  })
 
-  const handleChange = function(e){
-    e.preventDefault();
-    /* const inputName = e.target.name;
-    const inputValue = e.target.value;
-    console.log(inputName);
-    const updatedUser = { ...user, [inputName]: inputValue }
-    console.log(e.target.name.value); */
-    // setUser(updatedUser);
-
-    setUser({...user, [e.target.name]: e.target.value});
-    
+  const handleChange = (e) => {
+    const newUser = { ...user, [e.target.name]: e.target.value }
+    setUser({ ...newUser })
+    // console.log(e.target.name, e.target.value)
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.table(user)
+  }
+
   return (
     <div>
-      <form className='form'>
+      <form className='form' onSubmit={handleSubmit}>
         <h4>Multiple Inputs</h4>
         {/* name */}
         <div className='form-row'>
@@ -29,12 +28,12 @@ const MultipleInputs = () => {
             name
           </label>
           <input
+            value={user.name}
+            name='name'
+            onChange={handleChange}
             type='text'
             className='form-input'
             id='name'
-            name='name'
-            value={user.name}
-            onChange={(e) => handleChange(e)}
           />
         </div>
         {/* email */}
@@ -43,12 +42,12 @@ const MultipleInputs = () => {
             Email
           </label>
           <input
+            value={user.email}
+            name='email'
+            onChange={handleChange}
             type='email'
             className='form-input'
             id='email'
-            name='email'
-            value={user.email}
-            onChange={(e) => handleChange(e)}
           />
         </div>
         {/* email */}
@@ -57,12 +56,12 @@ const MultipleInputs = () => {
             Password
           </label>
           <input
+            value={user.password}
+            name='password'
+            onChange={handleChange}
             type='password'
             className='form-input'
             id='password'
-            name='password'
-            value={user.password}
-            onChange={(e) => handleChange(e)}
           />
         </div>
 
@@ -72,5 +71,5 @@ const MultipleInputs = () => {
       </form>
     </div>
   )
-};
-export default MultipleInputs;
+}
+export default MultipleInputs

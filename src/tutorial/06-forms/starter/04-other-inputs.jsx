@@ -1,22 +1,23 @@
-import { useState } from 'react';
-const frameworks = ['react', 'angular', 'vue', 'svelte'];
+import { useState } from 'react'
+const frameworks = ['react', 'angular', 'vue', 'svelte']
 const OtherInputs = () => {
-
-  const [shipping, setShipping] = useState(false);
-  const [framework, setFramework] = useState(false);
+  const [shipping, setShipping] = useState(false)
+  const [framework, setFramework] = useState('')
 
   const handleShipping = (e) => {
-    console.log(e.target.checked);
-    setShipping(e.target.checked);
+    console.dir(e.target.checked)
+    setShipping(e.target.checked)
   }
   const handleFramework = (e) => {
-    console.log(e.target.value);
-    setFramework(e.target.value);
+    console.dir(e.target.value)
+    setFramework(e.target.value)
   }
+
+  const handleSubmit = () => {}
 
   return (
     <div>
-      <form className='form'>
+      <form onSubmit={handleSubmit} className='form'>
         <h4>Other Inputs</h4>
         {/* name */}
         <div className='form-row' style={{ textAlign: 'left' }}>
@@ -34,10 +35,10 @@ const OtherInputs = () => {
             Framework
           </label>
           <select
+            value={framework}
+            onChange={handleFramework}
             name='framework'
             id='framework'
-            onChange={handleFramework}
-            value={framework}
           >
             {frameworks.map((framework) => {
               return <option key={framework}>{framework}</option>
@@ -50,5 +51,5 @@ const OtherInputs = () => {
       </form>
     </div>
   )
-}; 
-export default OtherInputs;
+}
+export default OtherInputs
