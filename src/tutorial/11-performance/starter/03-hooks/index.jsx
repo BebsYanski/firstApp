@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { data } from '../../../../data';
-import List from './List';
+import { useState } from 'react'
+import { data } from '../../../../data'
+import List from './List'
 const LowerState = () => {
-  const [people, setPeople] = useState(data);
-  const [count, setCount] = useState(0);
+  const [people, setPeople] = useState(data)
+  const [count, setCount] = useState(0)
 
   return (
     <section>
@@ -14,8 +14,9 @@ const LowerState = () => {
       >
         count {count}
       </button>
+
       <List people={people} />
     </section>
-  );
-};
-export default LowerState;
+  )
+}
+export default LowerState
